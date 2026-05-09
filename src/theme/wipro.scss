@@ -1,0 +1,80 @@
+:root {
+    /* ===============================
+   Brand Colors – Wipro
+   =============================== */
+
+    --brand-primary: #5C2D91;
+    /* Wipro purple */
+    --brand-secondary: #8E5EC6;
+    /* Soft accent purple */
+
+    /* Gradient */
+    --primary-gradient: linear-gradient(90deg,
+            #5C2D91 0%,
+            #8E5EC6 100%);
+    /* ===============================
+     Text Colors
+     =============================== */
+    --text-primary: #231f20;
+    /* Logo text */
+    --text-secondary: #58585b;
+    /* Body text */
+    --text-muted: #8a8a8f;
+    /* Labels / hints */
+
+    /* ===============================
+     Backgrounds
+     =============================== */
+    --bg-primary: #ffffff;
+    --bg-light: #f9f9fb;
+    --bg-dark: #000000;
+
+    /* ===============================
+     Status Colors
+     =============================== */
+    --color-success: #28a745;
+    --color-warning: #ffc107;
+    --color-error: #ed193f;
+    --color-info: #0d6efd;
+
+    /* ===============================
+     Borders & UI
+     =============================== */
+    --border-light: #e5e5e8;
+    --border-dark: #2a2a2a;
+
+
+
+    /* Soft Badge – Primary */
+    --badge-soft-primary-bg: #FCE7F3;
+    --badge-soft-primary-text: #BE185D;
+
+    /* Soft Badge – Success */
+    --badge-soft-success-bg: #DCFCE7;
+    --badge-soft-success-text: #15803D;
+
+    /* Soft Badge – Warning */
+    --badge-soft-warning-bg: #FEF3C7;
+    --badge-soft-warning-text: #92400E;
+
+    /* Soft Badge – Info */
+    --badge-soft-info-bg: #DBEAFE;
+    --badge-soft-info-text: #1D4ED8;
+
+    /* Soft Badge – Error */
+    --badge-soft-error-bg: #FEE2E2;
+    --badge-soft-error-text: #B91C1C;
+
+    /* Soft Badge – Neutral */
+    --badge-soft-neutral-bg: #F3F4F6;
+    --badge-soft-neutral-text: #374151;
+
+    /* Soft Badge – Pending */
+    --badge-soft-pending-bg: #FFF7ED;
+    --badge-soft-pending-text: #9A3412;
+
+    /* Soft Badge – Dark */
+    --badge-soft-dark-bg: #E5E7EB;
+    --badge-soft-dark-text: #111827;
+
+}

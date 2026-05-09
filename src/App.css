@@ -1,0 +1,14 @@
+body{
+  font-family: "Public Sans", sans-serif;
+}
+
+
+
+.rs-picker-select-menu {
+  max-width: 320px;
+}
+
+.rs-picker-select-menu-item {
+  white-space: normal;
+  word-break: break-word;
+}
