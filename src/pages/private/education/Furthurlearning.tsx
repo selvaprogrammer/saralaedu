@@ -1,6 +1,6 @@
 import AppButton from "@/components/organisams/AppButton";
 import { FaArrowRightLong } from "react-icons/fa6";
-import Teacher from "@assets/image/Teacher.jpg"
+import Teacher from "@assets/image/teacher.jpg"
 const furthurdata = [
     { title: "KALVI TV OFFICIAL", link: "https://www.youtube.com/playlist?list=PL-mvKYotpGsK5c724-HNCS-Xl9-zfLcUJ" },
     { title: "TN SCHOOLS", link: "https://tnschools.gov.in/welcome" },
