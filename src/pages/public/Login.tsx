@@ -32,7 +32,7 @@ const loginTab = [
     label: (
       <HStack>
         <FaUserGraduate />
-        <span>Author</span>
+        <span>Researcher</span>
       </HStack>
     ),
     value: 'author'
@@ -42,20 +42,15 @@ export default function Login() {
   const [selectedTab, setSelectedTab] = useState('login')
   return (
     <Fragment>
-      <div className='vh-100' >
-        <div className='position-absolute top-0 end-0 p-3'>
-          <img src={MainLogo} className='vh-15' />
-          <SegmentedControl
-            value={selectedTab}
-            data={loginTab}
-            onChange={(e: any) => { setSelectedTab(e) }}
-          />
-        </div>
-        {selectedTab == 'login' ? <LoginForm /> :
-          selectedTab == 'author' ? <Author /> : <Guide />
-        }
-        <Footer />
+      <div className='flex-end me-3'>
+        <img src={MainLogo} className="vh-25" />
+        <SegmentedControl
+          value={selectedTab}
+          data={loginTab}
+          onChange={(e: any) => { setSelectedTab(e) }}
+        />
       </div>
+      {selectedTab == 'login' ? <LoginForm /> : selectedTab == 'author' ? <Author /> : <Guide />}
     </Fragment>
   )
 }

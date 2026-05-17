@@ -40,11 +40,19 @@ import Biology_English from '@assets/ebook/Biology_English.pdf';
 import Zoology_Tamil from '@assets/ebook/Zoology_Tamil.pdf';
 import Zoology_English from '@assets/ebook/Zoology_English.pdf';
 
-import Question from "@assets/question.pdf"
+import Question from "@assets/question.pdf";
+import Question1 from "@assets/question/question1.pdf";
+import Question2 from "@assets/question/question2.pdf";
+import Question3 from "@assets/question/question3.pdf";
+import Question4 from "@assets/question/question4.pdf";
+import Question5 from "@assets/question/question5.pdf";
+
 import Asses_Respiration from "@assets/assesment_respiration.docx";
 
 import iAuthor from "@assets/image/author.png";
-import iGuide from "@assets/image/guide.png"
+import iGuide from "@assets/image/guide.png";
+import Guide1 from "@assets/image/guide1.png";
+import Author1 from "@assets/image/author1.png";
 
 
 const MainLogo = config.env == '3a' ? Logo3a :
@@ -65,5 +73,5 @@ export {
     ResLesson1,ResLesson2,ResLesson3,ResLesson4,ResLesson5,ResLesson6,ResLesson7,ResLesson8,
     BodLesson1,BodLesson2,BodLesson3,BodLesson4,BodLesson5,BodLesson6,BodLesson7,BodLesson8,
     Biology_English,Biology_Tamil,Zoology_English,Zoology_Tamil,Question,Asses_Respiration,
-    iAuthor,iGuide
+    iAuthor,iGuide,Guide1,Author1,Question1,Question2,Question3,Question4,Question5
 }

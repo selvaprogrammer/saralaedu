@@ -166,7 +166,7 @@ $align in (center, center, center),
 
 /* Main content */
 .layout-content {
-  max-height: 94vh;
+  max-height: 100vh;
   overflow-y: auto;
   flex: 1;
   padding: 0.5rem;
@@ -179,7 +179,7 @@ $align in (center, center, center),
 .layout-body {
   flex: 1;
   display: flex;
-  max-height: 94vh;
+  max-height: 100vh;
   overflow: hidden;
 }
 

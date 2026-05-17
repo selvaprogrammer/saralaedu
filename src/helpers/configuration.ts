@@ -8,5 +8,6 @@ export const config = {
     socket:base.VITE_SOCKET,
     openAi:base.VITE_SOCKET+base.VITE_OPENAI,
     user:base.VITE_USER,
-    password:base.VITE_PASS
+    password:base.VITE_PASS,
+    secret:base.VITE_SECRET
 }

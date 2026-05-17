@@ -7,11 +7,12 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaArrowRightLong, FaEnvelope } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import SHA256 from "crypto-js/sha256";
-
+import CryptoJS from "crypto-js";
+import { logins } from "@/helpers/logindata";
+const secretKey = config.secret;
 export default function LoginForm() {
     const navigate = useNavigate()
-    const [form, setForm] = useState({ user: config.user, password: config.password, });
+    const [form, setForm] = useState({ user: '', password: '', });
     const [error, setError] = useState<any>();
     const [loading, setLoading] = useState(false)
     const handleChange = (title: string, value: any) => { setForm(prev => ({ ...prev, [title]: value })); handleError(title, value ? '' : `${title} is required`) }
@@ -22,19 +23,29 @@ export default function LoginForm() {
         if (!form.password) error.password = 'Password is required'
         const cleanErrors = Object.fromEntries(Object.entries(error).filter(([_, v]) => v?.trim()));
         if (Object.keys(cleanErrors).length > 0) return setError((prev: any) => ({ ...prev, ...error }));
-        if (form.user != config.user) return toast.error('User name not found..')
-        if (form.password != config.password) return toast.error('Invalid Credencials..')
+        const isNamefound = logins.find((e, i) => e.name == form.user);
+        if (!isNamefound) return toast.error('User name not found..')
+        if (form.password != isNamefound.password) return toast.error('Invalid Password..')
         const toastLoader = toast.loading("Logging in...");
         setLoading(true);
-        setTimeout(() => { toast.dismiss(toastLoader); setLoading(false); localStorage.setItem('token', SHA256(config.env).toString()); navigate('/dashboard') }, 2500);
+        const encryptedData = CryptoJS.AES.encrypt(
+            JSON.stringify(isNamefound),
+            secretKey
+        ).toString();
+        setTimeout(() => {
+            toast.dismiss(toastLoader);
+            setLoading(false);
+            localStorage.setItem('user', encryptedData);
+            navigate('/dashboard')
+        }, 2500);
     }
     return (
         <div className='container'>
-            <div className='row d-flex align-items-center vh-100'>
-                 <div className='col-8'>
-                    <img src={Login} className='w-100' />
+            <div className='flex-row-center'>
+                <div className='col-6'>
+                    <img src={Login} className="w-100" style={{ maxHeight: '60vh', objectFit: 'contain' }} />
                 </div>
-                <div className='col-4'>
+                <div className='col-6'>
                     <div className='bg-white border shadow-sm p-2 rounded-3 w-75'>
                         <div className='p-2 d-flex align-items-center justify-content-between border-bottom'>
                             <div className='d-flex flex-row align-items-center'>
