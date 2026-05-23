@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import AppTable from '../AppTable';
 import Cell from 'rsuite/esm/Table/TableCell';
 import Column from 'rsuite/esm/Table/TableColumn';
@@ -10,7 +10,8 @@ import { FaPenClip, FaTrashCan } from 'react-icons/fa6';
 import { DeleteAlert } from '@/helpers/alerts';
 import { Role } from '@/helpers/utils';
 import toast from 'react-hot-toast';
-
+import { config } from '@/helpers/configuration';
+import CryptoJS from "crypto-js";
 export const fulltextHeader = [
     {
         key: 'name',
@@ -55,6 +56,12 @@ export default function UserTable(props: Props) {
     const [page, setPage] = useState(1);
     const [users, setUsers] = useState<any>([]);
     const [loading, setLoading] = useState(false);
+    const secretKey = config.secret;
+    const storedData = localStorage.getItem("user") ?? '';
+    const bytes = CryptoJS.AES.decrypt(storedData, secretKey);
+    const decryptedData = JSON.parse(
+        bytes.toString(CryptoJS.enc.Utf8)
+    );
     const loadUsers = async () => {
         const snapshot = await getDocs(collection(db, "users"));
         const users = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -92,15 +99,17 @@ export default function UserTable(props: Props) {
                             <Cell>
                                 {(rowData: any) => {
                                     if (key == 'action')
-                                        return (<div>
-                                            <span role='button' className="font-size-13" onClick={() => props.onUpdate(rowData)}>
-                                                <FaPenClip size={20} className="fw-bold text-info" />
-                                            </span>
-                                            <Divider vertical />
-                                            <span role='button' className="font-size-13" onClick={() => { DeleteAlert(() => deleteUser(rowData?.id)) }}>
-                                                <FaTrashCan size={20} className="fw-bold text-danger" />
-                                            </span>
-                                        </div>)
+                                        return (
+                                            <div>
+                                                <span role='button' className="font-size-13" onClick={() => props.onUpdate(rowData)}>
+                                                    <FaPenClip size={20} className="fw-bold text-info" />
+                                                </span>
+                                                <Divider vertical />
+                                                {decryptedData?.username != rowData.username &&
+                                                    <span role='button' className="font-size-13" onClick={() => { DeleteAlert(() => deleteUser(rowData?.id)) }}>
+                                                        <FaTrashCan size={20} className="fw-bold text-danger" />
+                                                    </span>}
+                                            </div>)
                                     if (key == 'role') {
                                         const uRole = Role.find((e) => e.value == rowData[key])
                                         return (

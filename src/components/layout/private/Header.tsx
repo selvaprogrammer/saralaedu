@@ -17,18 +17,18 @@ export default function Header() {
   return (
     <div className="flex-end p-2">
       <div className="flex-row-center gap-2">
-        <span role="button" className="text-info" onClick={()=> navigate('/guide')}>Guide</span>
-        <Divider vertical/>
-        <span role="button" className="text-info" onClick={()=> navigate('/research')}>Researcher</span>
-        <Divider vertical/>
+        <span role="button" className="text-info" onClick={() => navigate('/guide')}>Guide</span>
+        <Divider vertical />
+        <span role="button" className="text-info" onClick={() => navigate('/research')}>Researcher</span>
+        <Divider vertical />
         <Dropdown size="md" className="btn-gradient-border rounded-3" title={decryptedData?.name} icon={<FaRegCircleUser />}>
           <Dropdown.Item icon={<FaUserCheck />} >
             Profile
           </Dropdown.Item>
-          <Dropdown.Item icon={<GrUserAdd />} onClick={()=> navigate('/adduser')}>
+          {decryptedData?.role == 1 && <Dropdown.Item icon={<GrUserAdd />} onClick={() => navigate('/adduser')}>
             Add User
-          </Dropdown.Item>
-          <Dropdown.Item icon={<FaRightToBracket />} onClick={() => LogoutAlert(() => navigate('/logout'))}>
+          </Dropdown.Item>}
+          <Dropdown.Item icon={<FaRightToBracket />} onClick={() => navigate('/logout')}>
             Logout
           </Dropdown.Item>
         </Dropdown>

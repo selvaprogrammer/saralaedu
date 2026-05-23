@@ -2,13 +2,11 @@ import AppButton from "@/components/organisams/AppButton";
 import AppSelectbox from "@/components/organisams/AppSelectbox";
 import AppTextbox from "@/components/organisams/AppTextbox";
 import { db } from "@/Firebase";
-import { SmallLogo } from "@/helpers/image";
 import { Role } from "@/helpers/utils";
 import { collection, query, where, getDocs, addDoc, Timestamp, doc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaEnvelope, FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
-import { Divider } from "rsuite";
 interface Props {
     User: any;
     onClose: () => void;
@@ -72,17 +70,12 @@ export default function UserAdd(props: Props) {
         setLoading(false)
     }
     return (
-        <div className='bg-white border shadow-sm p-2 rounded-3 '>
+        <div className='bg-white border shadow-sm p-2 rounded-3 w-50'>
             <div className='p-2 d-flex align-items-center justify-content-between border-bottom'>
-                <div className='d-flex flex-row align-items-center'>
-                    <div className='d-flex flex-column ms-2'>
-                        <span className='font-size-20'>Sarala Education ...</span>
-                        <span className='font-size-14'>Add user here! 👋</span>
-                    </div>
-                </div>
-                <img src={SmallLogo} className="w-10" />
+                <span onClick={props.onClose} role="button" className="font-size-14 text-center text-info"> <FaArrowLeftLong className="me-2" /> Back to list</span>
+                <span className='font-size-14'>User Form ...</span>
             </div>
-            <div className='p-4'>
+            <div className='p-2'>
                 <AppTextbox
                     label='Name'
                     value={form.name}
@@ -145,8 +138,6 @@ export default function UserAdd(props: Props) {
                     onClick={handleSubmit}
                     loading={loading}
                 />
-                <Divider />
-                <span onClick={props.onClose} role="button" className="font-size-14 text-center text-info"> <FaArrowLeftLong className="me-2" /> Back to list</span>
             </div>
 
         </div>
