@@ -4,7 +4,7 @@ export default function Guide() {
         <div className='container'>
             <div className='row'>
                 <div className='col-3' >
-                    <img src={Guide1} className="w-100 h-100 rounded-3" style={{ maxHeight: '50vh', objectFit: 'contain', }} />
+                    <img src={Guide1} className="w-100 h-100 rounded-3" style={{ maxHeight: '40vh', objectFit: 'contain', }} />
                 </div>
                 <div className='col-9' >
                     <div className='border p-2 rounded-3'>

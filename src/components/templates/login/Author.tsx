@@ -5,7 +5,7 @@ export default function Author() {
         <div className='container'>
             <div className='row'>
                 <div className='col-3' >
-                    <img src={Author1} className="w-100 h-100 rounded-3" style={{ maxHeight: '50vh', objectFit: 'contain', }} />
+                    <img src={Author1} className="w-100 h-100 rounded-3" style={{ maxHeight: '40vh', objectFit: 'contain', }} />
                 </div>
                 <div className='col-9' >
                     <div className='border p-2 rounded-3'>
@@ -15,13 +15,13 @@ export default function Author() {
                         <br />
                         <span className='font-size-12'>M.Sc.,M.Phil.,M.Ed.,SET.,SET(Edu).,</span>
                         <br />
-                        <span className='font-size-12'>Lecturer</span>
+                        {/* <span className='font-size-12'>Lecturer</span>
                         <br />
                         <span className='font-size-12'>
                             District Institute of Education and Training
                             Kalayarkoil,  Sivagangai District
                         </span>
-                        <br />
+                        <br /> */}
                         <span className='font-size-12'>Email: asarala369@gmail.com</span>
                         <br />
                         <span className='font-size-12'>Contact : 9042419007</span>

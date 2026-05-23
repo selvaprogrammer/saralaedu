@@ -23,13 +23,13 @@ export const LogoutAlert = (callback: any) => {
     )
 }
 
-export const DownloadFsaAlert = (callback: any) => {
+export const DeleteAlert = (callback: any) => {
     return (
         toast(
             (t) => {
                 return (
                     <div className="d-flex flex-row align-items-center">
-                        <span>Are you sure you want to download ?</span>
+                        <span>Are you sure you want to delete ?</span>
                         <AppIconButton tooltip="Ok" className="ms-2 text-success" icon={<FaCheck />} onClick={() => { callback(); toast.dismiss(t.id); }} />
                         <AppIconButton tooltip="Cancel" className="ms-2 text-danger" icon={<FaXmark />} onClick={() => { toast.dismiss(t.id); }} />
                     </div>

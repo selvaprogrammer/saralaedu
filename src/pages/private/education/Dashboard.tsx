@@ -7,7 +7,7 @@ export default function Dashboard() {
         <Fragment>
             <MetaTag title="Dashboard" />
             <div className='p-2'>
-                <img src={Dashimg} className='vh-90 w-100'/>
+                <img src={Dashimg} className='vh-85 w-100'/>
             </div>
         </Fragment>
     )

@@ -3,7 +3,7 @@ import { SlNotebook } from 'react-icons/sl'
 
 export default function Bookone() {
   return (
-    <div>
+    <div >
       <div className="flex-between border-bottom text-brand-primary">
         <span className="font-size-20">Biology Tamil Book</span>
         <SlNotebook />

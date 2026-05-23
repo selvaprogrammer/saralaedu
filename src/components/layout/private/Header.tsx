@@ -3,8 +3,9 @@ import { config } from "@/helpers/configuration";
 import { MainLogo } from "@/helpers/image";
 import { FaRegCircleUser, FaRightToBracket, FaUserCheck } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import { Dropdown, } from "rsuite";
+import { Divider, Dropdown, } from "rsuite";
 import CryptoJS from "crypto-js";
+import { GrUserAdd } from "react-icons/gr";
 const secretKey = config.secret;
 export default function Header() {
   const navigate = useNavigate();
@@ -14,13 +15,24 @@ export default function Header() {
     bytes.toString(CryptoJS.enc.Utf8)
   );
   return (
-     <Dropdown size="md" className="btn-gradient-border rounded-3" title={decryptedData?.name} icon={<FaRegCircleUser />}>
-        <Dropdown.Item icon={<FaUserCheck />} >
-          Profile
-        </Dropdown.Item>
-        <Dropdown.Item icon={<FaRightToBracket />} onClick={() => LogoutAlert(() => navigate('/logout'))}>
-          Logout
-        </Dropdown.Item>
-      </Dropdown>
+    <div className="flex-end p-2">
+      <div className="flex-row-center gap-2">
+        <span role="button" className="text-info" onClick={()=> navigate('/guide')}>Guide</span>
+        <Divider vertical/>
+        <span role="button" className="text-info" onClick={()=> navigate('/research')}>Researcher</span>
+        <Divider vertical/>
+        <Dropdown size="md" className="btn-gradient-border rounded-3" title={decryptedData?.name} icon={<FaRegCircleUser />}>
+          <Dropdown.Item icon={<FaUserCheck />} >
+            Profile
+          </Dropdown.Item>
+          <Dropdown.Item icon={<GrUserAdd />} onClick={()=> navigate('/adduser')}>
+            Add User
+          </Dropdown.Item>
+          <Dropdown.Item icon={<FaRightToBracket />} onClick={() => LogoutAlert(() => navigate('/logout'))}>
+            Logout
+          </Dropdown.Item>
+        </Dropdown>
+      </div>
+    </div>
   )
 }

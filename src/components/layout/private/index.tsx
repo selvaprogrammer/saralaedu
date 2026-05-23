@@ -8,6 +8,7 @@ export default function PrivateLayout() {
             <div className="layout-body">
                 <Sidebar />
                 <main className="layout-content">
+                    <Header />
                     <Outlet />
                 </main>
             </div>

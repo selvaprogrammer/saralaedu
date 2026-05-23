@@ -3,12 +3,14 @@ import AppPasswordbox from "@/components/organisams/AppPasswordbox";
 import AppTextbox from "@/components/organisams/AppTextbox";
 import { config } from "@/helpers/configuration";
 import { Login, SmallLogo } from "@/helpers/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaArrowRightLong, FaEnvelope } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import CryptoJS from "crypto-js";
 import { logins } from "@/helpers/logindata";
+import { db } from "@/Firebase";
+import { collection, getDoc, getDocs, query, where } from "firebase/firestore";
 const secretKey = config.secret;
 export default function LoginForm() {
     const navigate = useNavigate()
@@ -23,22 +25,22 @@ export default function LoginForm() {
         if (!form.password) error.password = 'Password is required'
         const cleanErrors = Object.fromEntries(Object.entries(error).filter(([_, v]) => v?.trim()));
         if (Object.keys(cleanErrors).length > 0) return setError((prev: any) => ({ ...prev, ...error }));
-        const isNamefound = logins.find((e, i) => e.name == form.user);
-        if (!isNamefound) return toast.error('User name not found..')
-        if (form.password != isNamefound.password) return toast.error('Invalid Password..')
         const toastLoader = toast.loading("Logging in...");
         setLoading(true);
-        const encryptedData = CryptoJS.AES.encrypt(
-            JSON.stringify(isNamefound),
-            secretKey
-        ).toString();
-        setTimeout(() => {
-            toast.dismiss(toastLoader);
-            setLoading(false);
+        const userRef = collection(db, 'users');
+        const getUser = query(userRef, where("username", "==", form.user), where("password", "==", form.password))
+        const isUser = await getDocs(getUser);
+        if (!isUser.empty) {
+            const user = isUser.docs[0];
+            console.log('user', user.data());
+            const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(user.data()),secretKey).toString();
             localStorage.setItem('user', encryptedData);
             navigate('/dashboard')
-        }, 2500);
-    }
+        }
+        else toast.error('User not found..')
+        toast.dismiss(toastLoader);
+        setLoading(false);
+    };
     return (
         <div className='container'>
             <div className='flex-row-center'>

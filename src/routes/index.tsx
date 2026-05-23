@@ -30,6 +30,18 @@ const Question5 = lazy(() => import("@pages/private/education/Questionfive"));
 const Furthurlearning = lazy(() => import("@pages/private/education/Furthurlearning"));
 const RefRespiration = lazy(() => import("@pages/private/education/Ref-Respiration"));
 const RefCirculation = lazy(() => import("@pages/private/education/Ref-Circulation"));
+const Adduser = lazy(() => import("@pages/private/education/Adduser"));
+const Guider = lazy(() => import("@pages/private/education/Guider"));
+const Researcher = lazy(() => import("@pages/private/education/Researcher"));
+const Quiz1 = lazy(() => import("@pages/private/education/Quiz1"));
+const Quiz2 = lazy(() => import("@pages/private/education/Quiz2"));
+const Quiz3 = lazy(() => import("@pages/private/education/Quiz3"));
+const Quiz4 = lazy(() => import("@pages/private/education/Quiz4"));
+const Quiz5 = lazy(() => import("@pages/private/education/Quiz5"));
+const Quiz6 = lazy(() => import("@pages/private/education/Quiz6"));
+const Kalvi = lazy(() => import("@pages/private/education/Kalvi"));
+const Neet = lazy(() => import("@pages/private/education/Neet"));
+
 
 function Approutes() {
     return (
@@ -40,11 +52,23 @@ function Approutes() {
                         <Route element={<PrivateLayout />}>
                             <Route path='/' element={<Dashboard />} />
                             <Route path='/dashboard' element={<Dashboard />} />
+                            <Route path='/adduser' element={<Adduser />} />
+                            <Route path='/research' element={<Researcher />} />
+                            <Route path='/guide' element={<Guider />} />
                             <Route path='/respiration' element={<Respiration />} />
                             <Route path='/bodyfluids' element={<Bodyfluids />} />
                             <Route path='/furthur' element={<Furthurlearning />} />
                             <Route path='/ref1' element={<RefRespiration />} />
                             <Route path='/ref2' element={<RefCirculation />} />
+                            <Route path='/quiz1' element={<Quiz1 />} />
+                            <Route path='/quiz2' element={<Quiz2 />} />
+                            <Route path='/quiz3' element={<Quiz3 />} />
+                            <Route path='/quiz4' element={<Quiz4 />} />
+                            <Route path='/quiz5' element={<Quiz5 />} />
+                            <Route path='/quiz6' element={<Quiz6 />} />
+                            <Route path='/kalvi' element={<Kalvi />} />
+                            <Route path='/neet' element={<Neet />} />
+
                             <Route path='/book1' element={<Book1 />} />
                             <Route path='/book2' element={<Book2 />} />
                             <Route path='/book3' element={<Book3 />} />
