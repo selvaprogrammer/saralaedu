@@ -8,6 +8,7 @@ import {
     Progress,
 } from "rsuite";
 import Completed from "./Completed";
+import AppHeader from "../AppHeader";
 interface Props {
     questions: any;
 }
@@ -46,10 +47,11 @@ export default function Questionare(props: Props) {
     }
     return (
         <div style={{ maxWidth: 700, margin: "40px auto" }}>
+            <AppHeader label="Self Evaluation" link="/eval" title="Quiz" />
             <Panel bordered shaded>
                 <h4> Question {currentQuestion + 1} / {questions.length}</h4>
                 <Progress.Line percent={progress} status="active" />
-                <h3 style={{ marginTop: 20 }}>  {current.question}</h3>
+                <h5 style={{ marginTop: 20 }}>  {current.question}</h5>
                 <RadioGroup name="quiz" value={selectedAnswer} onChange={(value: any) => setSelectedAnswer(value)}>
                     {current.options.map((option:any, index:number) => (
                         <Radio key={index} value={option} style={{ marginTop: 10 }}>

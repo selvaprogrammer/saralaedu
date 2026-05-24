@@ -1,4 +1,6 @@
 import AppButton from "@/components/organisams/AppButton";
+import AppHeader from "@/components/templates/AppHeader";
+import { Body, Body1, Body2, iNeet, Kebo, Respiration } from "@/helpers/image";
 import { FaLink } from "react-icons/fa6";
 
 export default function Neet() {
@@ -6,15 +8,23 @@ export default function Neet() {
         { name: "NEET ZOOLOGY KALVITV VIDEOS-ALL CHAPTERS", link: "https://www.youtube.com/playlist?list=PL-mvKYotpGsJZH_Qy4JGU7Lj86GIbu2dv" },
         { name: "NEET ZOOLOGY -BODY FLUIDS", link: "https://youtu.be/V4s5ttLUysA?si=6UvpdB9X3mbyhrOK" },
         { name: "NEET ZOOLOGY -BLOOD CIRCULATIONS", link: "https://youtu.be/V4s5ttLUysA?si=5fQEWJbTWqIjO_9X" },
-        ]
+    ];
+    const lPdf = [
+        { name: "Body Fluid and Circulation", link: Body },
+        { name: "Body Fluid and Circulation", link: Body1 },
+        { name: "Body Fluid and Circulation", link: Body2 },
+        { name: "Respiration", link: Respiration },
+        { name: "Neet", link: iNeet },
+        { name: "Kebo", link: Kebo }
+    ];
     return (
-        <div className="container">
+        <div >
+            <AppHeader label="Furthur Learning" link="/furthur" title="Learning Resources" />
             <div className="flex-column-center vh-100">
-                <h4 className="mb-2">NEET STUDY MATERIALS</h4>
                 {evl.map((e, i) => {
                     return (
                         <div key={i} className="w-100 shadow p-2 rounded-3 flex-between">
-                            <span>{e.name}</span>
+                            <span className="font-size-12">{e.name}</span>
                             <AppButton
                                 label='View'
                                 endIcon={<FaLink />}
@@ -24,6 +34,24 @@ export default function Neet() {
                         </div>
                     )
                 })}
+                <div >
+                    <h5>Pdf Learning Materials</h5>
+                    <div className="row flex-center">
+                        {lPdf.map((e, i) => {
+                            return (
+                                <div key={i} className="col-3  shadow p-2 rounded-3 flex-between">
+                                    <span className="font-size-12">{e.name}</span>
+                                    <AppButton
+                                        label='View'
+                                        endIcon={<FaLink />}
+                                        className="bg-primary-gradient text-white"
+                                        onClick={() => { window.open(e.link, "_blank"); }}
+                                    />
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
             </div>
         </div>
     );

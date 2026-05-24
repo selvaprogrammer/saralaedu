@@ -1,28 +1,29 @@
 import AppButton from "@/components/organisams/AppButton";
-import { FaLink } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 export default function Evaluation() {
   const evl = [
-    { name: "Practice 1", link: "https://diksha.gov.in/play/content/do_312522928385556480115127?dialCode=6CKTEG&l1Parent=do_31279143247867904011527" },
-    { name: "Practice 2", link: "https://diksha.gov.in/play/content/do_31255490946388787215076?dialCode=6CKTEG&l1Parent=do_31279143247867904011527" },
-    { name: "Practice 3", link: "https://diksha.gov.in/play/content/do_31256485372561817618256?dialCode=6CKTEG&l1Parent=do_31279143247867904011527" },
-    { name: "Practice 4", link: "https://diksha.gov.in/play/content/do_31255434324614348814848?dialCode=6CKTEG&l1Parent=do_31279143247867904011527" },
-    { name: "Practice 5", link: "https://diksha.gov.in/play/content/do_31255434324614348814848?dialCode=6CKTEG&l1Parent=do_31279143247867904011527" },
-    { name: "Practice 6", link: "https://diksha.gov.in/play/content/do_31255490946388787215076?dialCode=6CKTEG&l1Parent=do_31279143247867904011527" },
+    { name: "Quiz 1", link: "/quiz1" },
+    { name: "Quiz 2", link: "/quiz2" },
+    { name: "Quiz 3", link: "/quiz3" },
+    { name: "Quiz 4", link: "/quiz4" },
+    { name: "Quiz 5", link: "/quiz5" },
+    { name: "Quiz 6", link: "/quiz6" },
   ]
+  const navigate = useNavigate()
   return (
     <div className="container">
       <div className="flex-column-center vh-100">
-        <h4>Self Assesment Quiz Links</h4>
-        <pre>Note : Before clicking view you must be logged into Diksha Application</pre>
+        <h4>Self Evaluation Quiz Links</h4>
         {evl.map((e, i) => {
           return (
             <div key={i} className="w-100 shadow p-2 rounded-3 flex-between">
               <span>{e.name}</span>
               <AppButton
                 label='View'
-                endIcon={<FaLink />}
+                endIcon={<FaArrowRight />}
                 className="bg-primary-gradient text-white"
-                onClick={() => { window.open(e.link, "_blank"); }}
+                onClick={() => { navigate(e.link); }}
               />
             </div>
           )

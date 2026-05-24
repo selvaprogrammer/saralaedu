@@ -1,8 +1,10 @@
 import AppButton from "@/components/organisams/AppButton";
+import AppHeader from "@/components/templates/AppHeader";
 import Discussionform from "@/components/templates/Discussionform";
 import { ResLesson1, ResLesson2, ResLesson3, ResLesson4, ResLesson5, ResLesson6, ResLesson7, ResLesson8 } from "@/helpers/image";
 import { useState } from "react";
 import { FaArrowLeftLong, FaArrowRight, FaArrowRightLong } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 import { SegmentedControl } from "rsuite";
 
 const reslessons = [
@@ -16,6 +18,7 @@ const reslessons = [
     { title: "சுவாச மண்டலக்கோளாறுகள் / Disorders of the respiratory system", link: "https://www.youtube.com/embed/XUJsuak44-0", img: ResLesson8, link1: "https://www.youtube.com/embed/Osrx8nUs1z4" },
 ];
 export default function Respiration() {
+    const navigate = useNavigate();
     const [isVideo, setIsVideo] = useState(false)
     const [videodata, setVideoData] = useState<any>(null);
     const [playing, setPlaying] = useState(1)
@@ -24,16 +27,19 @@ export default function Respiration() {
             {isVideo ?
                 <div className="row">
                     <div className="col-9">
-                        <div className="flex-between border-bottom text-brand-primary mb-2">
-                            <div className="flex-row-center" role="button" onClick={() => { setIsVideo(false); setVideoData(null) }}>
-                                <FaArrowLeftLong className="me-2" />
-                                <span className="font-size-12">{videodata?.title}</span>
-                            </div>
+                        <div className="flex-between border-bottom gap-2 mb-2">
+                            <AppButton
+                                label={videodata?.title}
+                                startIcon={<FaArrowLeftLong />}
+                                className="bg-primary-gradient text-white"
+                                onClick={() => { setIsVideo(false); setVideoData(null) }}
+                            />
                             {videodata?.link1 && (
                                 <SegmentedControl
                                     value={playing}
                                     data={[{ label: 'Video 1', value: 1 }, { label: 'Video 2', value: 2 }]}
                                     onChange={(e: any) => { setPlaying(e) }}
+                                    className="text-truncate"
                                 />
                             )}
                         </div>
@@ -49,22 +55,18 @@ export default function Respiration() {
                     <div className="col-3">
                         <div className="flex-center vh-90">
                             <div>
-                                <Discussionform />
+                                <Discussionform vtitle={videodata?.title}/>
                             </div>
                         </div>
                     </div>
                 </div> :
                 <div>
-                    <div className="flex-between border-bottom text-brand-primary mb-2">
-                        <div className="flex-row-center">
-                            <span >Respiration</span>
-                        </div>
-                    </div>
+                    <AppHeader label="Lessons" link="/lesson" title="சுவாசம் / Respiration" />
                     <div className="row">
                         {reslessons.map((e, i) => {
                             return (
                                 <div className='col-3' key={i}>
-                                    <div className="mt-2 p-2 text-truncate shadow  border bg-white rounded-top-3 text-brand-primary">
+                                    <div className="mt-2 p-2 text-truncate shadow  border bg-white rounded-top-3">
                                         <span className="font-size-14 ">{e?.title}</span>
                                     </div>
                                     <div className='flex-center bg-white m-2'>

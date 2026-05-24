@@ -1,7 +1,7 @@
 import { LogoutAlert } from "@/helpers/alerts";
 import { config } from "@/helpers/configuration";
 import { MainLogo } from "@/helpers/image";
-import { FaRegCircleUser, FaRightToBracket, FaUserCheck } from "react-icons/fa6";
+import { FaRegCircleUser, FaRightToBracket, FaUserCheck, FaWpforms } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { Divider, Dropdown, } from "rsuite";
 import CryptoJS from "crypto-js";
@@ -27,6 +27,9 @@ export default function Header() {
           </Dropdown.Item>
           {decryptedData?.role == 1 && <Dropdown.Item icon={<GrUserAdd />} onClick={() => navigate('/adduser')}>
             Add User
+          </Dropdown.Item>}
+          {decryptedData?.role == 1 && <Dropdown.Item icon={<FaWpforms />} onClick={() => navigate('/forum')}>
+           Form
           </Dropdown.Item>}
           <Dropdown.Item icon={<FaRightToBracket />} onClick={() => navigate('/logout')}>
             Logout

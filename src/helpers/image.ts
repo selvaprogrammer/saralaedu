@@ -47,12 +47,21 @@ import Question3 from "@assets/question/question3.pdf";
 import Question4 from "@assets/question/question4.pdf";
 import Question5 from "@assets/question/question5.pdf";
 
-import Asses_Respiration from "@assets/assesment_respiration.docx";
 
 import iAuthor from "@assets/image/author.png";
 import iGuide from "@assets/image/guide.png";
 import Guide1 from "@assets/image/guide1.png";
 import Author1 from "@assets/image/author1.png";
+
+import Body from "@assets/learning/body-fluid.pdf";
+import Body1 from "@assets/learning/body-fluid-1.pdf";
+import Body2 from "@assets/learning/body-fluid-2.pdf";
+import Respiration from "@assets/learning/respiration.pdf";
+import iNeet from "@assets/learning/Neet.pdf";
+import Kebo from "@assets/learning/kebo.pdf";
+
+
+
 
 
 const MainLogo = config.env == '3a' ? Logo3a :
@@ -72,6 +81,7 @@ export {
     LoaderImage, Login, Empty, MainLogo, SmallLogo,NotFound,Dashimg,
     ResLesson1,ResLesson2,ResLesson3,ResLesson4,ResLesson5,ResLesson6,ResLesson7,ResLesson8,
     BodLesson1,BodLesson2,BodLesson3,BodLesson4,BodLesson5,BodLesson6,BodLesson7,BodLesson8,
-    Biology_English,Biology_Tamil,Zoology_English,Zoology_Tamil,Question,Asses_Respiration,
-    iAuthor,iGuide,Guide1,Author1,Question1,Question2,Question3,Question4,Question5
+    Biology_English,Biology_Tamil,Zoology_English,Zoology_Tamil,Question,
+    iAuthor,iGuide,Guide1,Author1,Question1,Question2,Question3,Question4,Question5,
+    Body,Body1,Body2,Kebo,Respiration,iNeet
 }

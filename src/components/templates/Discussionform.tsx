@@ -1,27 +1,48 @@
 import { SmallLogo } from '@/helpers/image';
-import  { useState } from 'react'
+import { useState } from 'react'
 import toast from 'react-hot-toast';
-import {  FaArrowRightLong } from 'react-icons/fa6';
+import { FaArrowRightLong } from 'react-icons/fa6';
 import AppButton from '../organisams/AppButton';
 import AppTextbox from '../organisams/AppTextbox';
-export default function Discussionform() {
-    const [form, setForm] = useState({ name: '', feedback: '', });
+import { config } from '@/helpers/configuration';
+import CryptoJS from "crypto-js";
+import { db } from '@/Firebase';
+import { addDoc, collection, Timestamp } from 'firebase/firestore';
+interface Props {
+    vtitle: string;
+}
+const secretKey = config.secret;
+export default function Discussionform(props: Props) {
+    const storedData = localStorage.getItem("user") ?? '';
+    const bytes = CryptoJS.AES.decrypt(storedData, secretKey);
+    const decryptedData = JSON.parse(
+        bytes.toString(CryptoJS.enc.Utf8)
+    );
+    const [form, setForm] = useState({ name: decryptedData?.name ?? '', feedback: '', title: props.vtitle });
     const [error, setError] = useState<any>();
     const [loading, setLoading] = useState(false)
     const handleChange = (title: string, value: any) => { setForm(prev => ({ ...prev, [title]: value })); handleError(title, value ? '' : `${title} is required`) }
     const handleError = (title: string, value: any) => setError((prev: any) => ({ ...prev, [title]: value }));
     const handleSubmit = async () => {
         let error: { [key: string]: string } = {};
-        if (!form.name) error.name = 'User name is required'
+        if (!form.name) error.name = 'Name is required'
         if (!form.feedback) error.feedback = 'Feedback is required'
         const cleanErrors = Object.fromEntries(Object.entries(error).filter(([_, v]) => v?.trim()));
         if (Object.keys(cleanErrors).length > 0) return setError((prev: any) => ({ ...prev, ...error }));
-       const toastLoader = toast.loading("Logging in...");
+        console.log('form', form);
+        const toastLoader = toast.loading("Sending...");
         setLoading(true);
-        setTimeout(() => {
-            toast.dismiss(toastLoader);
-            setLoading(false);
-        }, 2500);
+        //add new user
+        try {
+            await addDoc(collection(db, "forum"), { ...form, createdAt: Timestamp.now() });
+            toast.success("Successfully Send")
+            setForm(prev => ({ ...prev, feedback: '' }));
+        }
+        catch (error) {
+            toast.error("Please try again")
+        }
+        toast.dismiss(toastLoader);
+        setLoading(false);
     }
     return (
         <div className='bg-white border shadow-sm p-2 rounded-2'>
@@ -34,6 +55,7 @@ export default function Discussionform() {
                 <img src={SmallLogo} className="w-10" />
             </div>
             <div className='p-4'>
+                <span className='font-size-12'>{props.vtitle}</span>
                 <AppTextbox
                     label='Your Name'
                     value={form.name}

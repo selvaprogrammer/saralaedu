@@ -41,7 +41,7 @@ const Quiz5 = lazy(() => import("@pages/private/education/Quiz5"));
 const Quiz6 = lazy(() => import("@pages/private/education/Quiz6"));
 const Kalvi = lazy(() => import("@pages/private/education/Kalvi"));
 const Neet = lazy(() => import("@pages/private/education/Neet"));
-
+const Discussion = lazy(() => import("@pages/private/education/Discussion"));
 
 function Approutes() {
     return (
@@ -53,6 +53,7 @@ function Approutes() {
                             <Route path='/' element={<Dashboard />} />
                             <Route path='/dashboard' element={<Dashboard />} />
                             <Route path='/adduser' element={<Adduser />} />
+                            <Route path='/forum' element={<Discussion />} />
                             <Route path='/research' element={<Researcher />} />
                             <Route path='/guide' element={<Guider />} />
                             <Route path='/respiration' element={<Respiration />} />

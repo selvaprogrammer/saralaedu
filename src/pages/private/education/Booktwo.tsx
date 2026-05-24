@@ -1,13 +1,10 @@
+import AppHeader from '@/components/templates/AppHeader'
 import { Biology_English } from '@/helpers/image'
-import { SlNotebook } from 'react-icons/sl'
 
 export default function Booktwo() {
   return (
     <div>
-      <div className="flex-between border-bottom text-brand-primary">
-        <span className="font-size-20">Biology English Book</span>
-        <SlNotebook />
-      </div>
+      <AppHeader label="Ebook" link="/ebook" title="Biology English Book" />
       <div className='mt-3 border rounded-3 shadow w-100 vh-80'>
         <iframe
           src={Biology_English}

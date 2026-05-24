@@ -14,7 +14,6 @@ interface Props {
 
 export default function UserAdd(props: Props) {
     const { User } = props;
-    console.log('User', User);
     const [form, setForm] = useState({
         username: User?.username ?? '',
         password: User?.password ?? '',

@@ -23,7 +23,7 @@ export default function AppButton(props: AppButtonProps) {
             onClick={props.onClick}
             loading={props.loading}
         >
-            {props.label}
+        <span className="text-truncate"> {props.label}</span>
         </Button>
     )
 }

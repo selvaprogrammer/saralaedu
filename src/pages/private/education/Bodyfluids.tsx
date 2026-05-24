@@ -1,4 +1,5 @@
 import AppButton from "@/components/organisams/AppButton";
+import AppHeader from "@/components/templates/AppHeader";
 import Discussionform from "@/components/templates/Discussionform";
 import { BodLesson1, BodLesson2, BodLesson3, BodLesson4, BodLesson5, BodLesson6, BodLesson7, BodLesson8, } from "@/helpers/image";
 import { useState } from "react";
@@ -24,16 +25,19 @@ export default function Bodyfluids() {
       {isVideo ?
         <div className="row">
           <div className="col-9">
-            <div className="flex-between border-bottom text-brand-primary mb-2">
-              <div className="flex-row-center" role="button" onClick={() => { setIsVideo(false); setVideoData(null) }}>
-                <FaArrowLeftLong className="me-2" />
-                <span className="font-size-12">{videodata?.title}</span>
-              </div>
+            <div className="flex-between border-bottom gap-2 mb-2">
+              <AppButton
+                label={videodata?.title}
+                startIcon={<FaArrowLeftLong />}
+                className="bg-primary-gradient text-white"
+                onClick={() => { setIsVideo(false); setVideoData(null) }}
+              />
               {videodata?.link1 && (
                 <SegmentedControl
                   value={playing}
                   data={[{ label: 'Video 1', value: 1 }, { label: 'Video 2', value: 2 }]}
                   onChange={(e: any) => { setPlaying(e) }}
+                  className="text-truncate"
                 />
               )}
             </div>
@@ -49,17 +53,13 @@ export default function Bodyfluids() {
           <div className="col-3">
             <div className="flex-center vh-90">
               <div>
-                <Discussionform />
+                <Discussionform vtitle={videodata?.title}/>
               </div>
             </div>
           </div>
         </div> :
         <div>
-          <div className="flex-between border-bottom text-brand-primary mb-2">
-            <div className="flex-row-center">
-              <span >Body Fluids and Circulation</span>
-            </div>
-          </div>
+          <AppHeader label="Lessons" link="/lesson" title="உடல்திரவங்கள் மற்றும் சுற்றோட்டம் / Body Fluids and Circulation" />
           <div className="row">
             {bodlessons.map((e, i) => {
               return (

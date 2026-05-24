@@ -1,5 +1,7 @@
 import AppButton from "@/components/organisams/AppButton";
+import AppHeader from "@/components/templates/AppHeader";
 import { FaLink } from "react-icons/fa6";
+import { Fragment } from "react/jsx-runtime";
 
 export default function Kalvi() {
     const Kalvidata = [
@@ -26,30 +28,31 @@ export default function Kalvi() {
         },
     ]
     return (
-        <div className="container">
-            <div className="flex-column-center vh-100">
-                {Kalvidata.map((e, i) => {
-                    return (
-                        <div className="mb-2">
-                            <h4>{e.title}</h4>
-                            {e.content.map((e, i) => {
-                                return (
-                                    <div key={i} className="w-100 shadow p-2 rounded-3 flex-between">
-                                        <span>{e.name}</span>
-                                        <AppButton
-                                            label='View'
-                                            endIcon={<FaLink />}
-                                            className="bg-primary-gradient text-white"
-                                            onClick={() => { window.open(e.link, "_blank"); }}
-                                        />
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    )
-                })}
+        <Fragment>
+            <AppHeader label="Furthur Learning" link="/furthur" title="KALVI TV" />
+            <div className="flex-column-center">
+                    {Kalvidata.map((e, i) => {
+                        return (
+                            <div className="mb-2 w-100">
+                                <h6>{e.title}</h6>
+                                {e.content.map((e, i) => {
+                                    return (
+                                        <div key={i} className="w-100 shadow p-2 rounded-3 flex-between">
+                                            <span className="font-size-12">{e.name}</span>
+                                            <AppButton
+                                                label='View'
+                                                endIcon={<FaLink />}
+                                                className="bg-primary-gradient text-white"
+                                                onClick={() => { window.open(e.link, "_blank"); }}
+                                            />
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        )
+                    })}
 
-            </div>
-        </div>
+                </div>
+        </Fragment>
     );
 }

@@ -1,13 +1,10 @@
+import AppHeader from '@/components/templates/AppHeader'
 import { Question1 } from '@/helpers/image'
-import { LiaQuestionSolid } from 'react-icons/lia'
 
 export default function Questionone() {
     return (
         <div>
-            <div className="flex-between border-bottom text-brand-primary">
-                <span className="font-size-20">Previous Year Question Paper</span>
-                <LiaQuestionSolid />
-            </div>
+            <AppHeader label="Question" link="/question" title="Question Paper 1" />
             <div className='mt-3 border rounded-3 shadow w-100 vh-80'>
                 <iframe
                     src={Question1}

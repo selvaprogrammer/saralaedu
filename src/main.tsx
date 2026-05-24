@@ -15,7 +15,7 @@ createRoot(document.getElementById('root')!).render(
     <PersistGate loading={null} persistor={persistor}>
       <App />
       <Toaster
-        toastOptions={{ position: 'top-center' as ToastPosition, className: "bg-primary-gradient text-white", style: { maxWidth: 500 } }} />
+        toastOptions={{ position: 'top-right' as ToastPosition, className: "bg-primary-gradient text-white", style: { maxWidth: 500 } }} />
     </PersistGate>
   </Provider>
 )

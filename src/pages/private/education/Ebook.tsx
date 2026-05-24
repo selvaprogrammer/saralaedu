@@ -1,72 +1,35 @@
+import AppButton from '@/components/organisams/AppButton';
 import MetaTag from '@/components/templates/MetaTag'
-import { Biology_English, Biology_Tamil, Zoology_English, Zoology_Tamil } from '@/helpers/image';
-import React, { Fragment, useState } from 'react'
-import { SlNotebook } from 'react-icons/sl';
-import { HStack, SegmentedControl } from 'rsuite';
-const bookTab = [
-  {
-    label: (
-      <HStack>
-        <SlNotebook />
-        <span>Biology - Tamil</span>
-      </HStack>
-    ),
-    value: 'biotamil'
-  },
-  {
-    label: (
-      <HStack>
-        <SlNotebook />
-        <span>Biology - English</span>
-      </HStack>
-    ),
-    value: 'bioenglish'
-  },
-  {
-    label: (
-      <HStack>
-        <SlNotebook />
-        <span>Zoology - Tamil</span>
-      </HStack>
-    ),
-    value: 'ziotamil'
-  },
-  {
-    label: (
-      <HStack>
-        <SlNotebook />
-        <span>Zoology - English</span>
-      </HStack>
-    ),
-    value: 'zioenglish'
-  },
-];
+import { FaArrowRight } from 'react-icons/fa6';
+import { useNavigate } from 'react-router-dom';
+import { Fragment } from 'react/jsx-runtime';
+const ebook = [
+  { name: "Biology - Tamil", link: "/book1" },
+  { name: "Biology - English", link: "/book2" },
+  { name: "Zoology - Tamil", link: "/book3" },
+  { name: "Zoology - English", link: "/book4" }
+]
 export default function Ebook() {
-  const [book, setBook] = useState('biotamil');
+  const navigate = useNavigate();
   return (
     <Fragment>
-      <MetaTag title="Ebook" />
-      <div className='p-2'>
-        <div className="flex-between border-bottom text-brand-primary">
-          <span className="font-size-20">Ebook</span>
-          <SegmentedControl
-            value={book}
-            data={bookTab}
-            onChange={(e: any) => { setBook(e) }}
-          />
-        </div>
-        <div className='mt-3 border rounded-3 shadow w-100 vh-80'>
-          <iframe
-            src={
-              book == 'biotamil' ? Biology_Tamil :
-                book == 'bioenglish' ? Biology_English :
-                  book == 'ziotamil' ? Zoology_Tamil : Zoology_English}
-            title="Ebook"
-            width="100%"
-            height="100%"
-            style={{ border: "none" }}
-            className='border rounded-3 shadow w-100 vh-80'
-          />
+      <MetaTag title="Lesson" />
+      <div className="container">
+        <div className="flex-column-center vh-100">
+          <h4>Lessons</h4>
+          {ebook.map((e, i) => {
+            return (
+              <div key={i} className="w-100 shadow p-2 rounded-3 flex-between">
+                <span>{e.name}</span>
+                <AppButton
+                  label='View'
+                  endIcon={<FaArrowRight />}
+                  className="bg-primary-gradient text-white"
+                  onClick={() => { navigate(e.link); }}
+                />
+              </div>
+            )
+          })}
         </div>
       </div>
     </Fragment>
