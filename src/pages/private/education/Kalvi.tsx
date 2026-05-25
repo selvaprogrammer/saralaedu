@@ -7,7 +7,7 @@ export default function Kalvi() {
     const Kalvidata = [
         { title: "KALVI TV XI BIOLOGY VIDEOS ", content: [{ name: "BIOLOGY", link: "https://www.youtube.com/playlist?list=PL-mvKYotpGsK5c724-HNCS-Xl9-zfLcUJ" }] },
         {
-            title: "KALVI TV -Respiration",
+            title: "KALVI TV - RESPIRATION VIDEOS",
             content: [
                 { name: "Respiration 1", link: "https://youtu.be/2dO8Zjbxuzw?si=VvLmsKvEbqQQ4hvj" },
                 { name: "Respiration 2", link: "https://youtu.be/b4fcCCjBigg?si=OPaRIm_OQ2adWCMN" },
@@ -17,7 +17,7 @@ export default function Kalvi() {
             ]
         },
         {
-            title: "BODY FLUID AND CIRCULATION",
+            title: "KALVI TV - BODY FLUID AND CIRCULATION",
             content: [
                 { name: "Body Fluid and Circulation 1", link: "https://youtu.be/flZEAnviJvY?si=RWpKYy_nv2PabSMS" },
                 { name: "Body Fluid and Circulation 2", link: "https://youtu.be/a6RCl2SHILY?si=dhFsBPh7fFZbzQpC" },
@@ -34,11 +34,11 @@ export default function Kalvi() {
                     {Kalvidata.map((e, i) => {
                         return (
                             <div className="mb-2 w-100">
-                                <h6>{e.title}</h6>
+                                <h4>{e.title}</h4>
                                 {e.content.map((e, i) => {
                                     return (
                                         <div key={i} className="w-100 shadow p-2 rounded-3 flex-between">
-                                            <span className="font-size-12">{e.name}</span>
+                                            <span className="">{e.name}</span>
                                             <AppButton
                                                 label='View'
                                                 endIcon={<FaLink />}

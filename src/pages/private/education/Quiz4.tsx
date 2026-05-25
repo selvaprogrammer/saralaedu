@@ -3,6 +3,6 @@ import { sacirculation4 } from "@/helpers/utils";
 
 export default function Quiz4() {
   return (
-    <Questionare questions={sacirculation4} />
+    <Questionare questions={sacirculation4} title="Body Fluid and Circulation - Quiz 1"/>
   )
 }

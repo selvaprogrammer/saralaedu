@@ -4,7 +4,7 @@ import { Biology_Tamil } from '@/helpers/image'
 export default function Bookone() {
   return (
     <div >
-      <AppHeader label="Ebook" link="/ebook" title="Biology Tamil Book" />
+      <AppHeader label="Ebook" link="/ebook" title="XI STD Biology - Tamil Medium" />
       <div className='mt-3 border rounded-3 shadow w-100 vh-80'>
         <iframe
           src={Biology_Tamil}

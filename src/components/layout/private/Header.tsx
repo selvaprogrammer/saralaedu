@@ -6,9 +6,25 @@ import { useNavigate } from "react-router-dom";
 import { Divider, Dropdown, } from "rsuite";
 import CryptoJS from "crypto-js";
 import { GrUserAdd } from "react-icons/gr";
+import { useEffect } from "react";
 const secretKey = config.secret;
 export default function Header() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleStorageChange = (event:any) => {
+      if (event.key === "user") {
+        console.log('e',event);
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
   const storedData = localStorage.getItem("user") ?? '';
   const bytes = CryptoJS.AES.decrypt(storedData, secretKey);
   const decryptedData = JSON.parse(
@@ -22,9 +38,9 @@ export default function Header() {
         <span role="button" className="text-info" onClick={() => navigate('/research')}>Researcher</span>
         <Divider vertical />
         <Dropdown size="md" className="btn-gradient-border rounded-3" title={decryptedData?.name} icon={<FaRegCircleUser />}>
-          <Dropdown.Item icon={<FaUserCheck />} >
+          {/* <Dropdown.Item icon={<FaUserCheck />} >
             Profile
-          </Dropdown.Item>
+          </Dropdown.Item> */}
           {decryptedData?.role == 1 && <Dropdown.Item icon={<GrUserAdd />} onClick={() => navigate('/adduser')}>
             Add User
           </Dropdown.Item>}

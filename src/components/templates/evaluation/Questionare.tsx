@@ -11,6 +11,7 @@ import Completed from "./Completed";
 import AppHeader from "../AppHeader";
 interface Props {
     questions: any;
+    title:string;
 }
 export default function Questionare(props: Props) {
     const { questions } = props;
@@ -47,7 +48,7 @@ export default function Questionare(props: Props) {
     }
     return (
         <div style={{ maxWidth: 700, margin: "40px auto" }}>
-            <AppHeader label="Self Evaluation" link="/eval" title="Quiz" />
+            <AppHeader label="Self Evaluation" link="/eval" title={props.title} />
             <Panel bordered shaded>
                 <h4> Question {currentQuestion + 1} / {questions.length}</h4>
                 <Progress.Line percent={progress} status="active" />

@@ -1,6 +1,6 @@
 import AppButton from "@/components/organisams/AppButton";
 import AppHeader from "@/components/templates/AppHeader";
-import { Body, Body1, Body2, iNeet, Kebo, Respiration } from "@/helpers/image";
+import { Body, Body1, Respiration1, iNeet, Kebo, Respiration } from "@/helpers/image";
 import { FaLink } from "react-icons/fa6";
 
 export default function Neet() {
@@ -12,10 +12,10 @@ export default function Neet() {
     const lPdf = [
         { name: "Body Fluid and Circulation", link: Body },
         { name: "Body Fluid and Circulation", link: Body1 },
-        { name: "Body Fluid and Circulation", link: Body2 },
+        { name: "Body Fluid and Circulation", link: Kebo },
+        { name: "Respiration", link: Respiration1 },
         { name: "Respiration", link: Respiration },
-        { name: "Neet", link: iNeet },
-        { name: "Kebo", link: Kebo }
+        { name: "NEET", link: iNeet },
     ];
     return (
         <div >
@@ -24,7 +24,7 @@ export default function Neet() {
                 {evl.map((e, i) => {
                     return (
                         <div key={i} className="w-100 shadow p-2 rounded-3 flex-between">
-                            <span className="font-size-12">{e.name}</span>
+                            <span >{e.name}</span>
                             <AppButton
                                 label='View'
                                 endIcon={<FaLink />}
@@ -35,12 +35,12 @@ export default function Neet() {
                     )
                 })}
                 <div >
-                    <h5>Pdf Learning Materials</h5>
+                    <h4>Pdf Learning Materials</h4>
                     <div className="row flex-center">
                         {lPdf.map((e, i) => {
                             return (
-                                <div key={i} className="col-3  shadow p-2 rounded-3 flex-between">
-                                    <span className="font-size-12">{e.name}</span>
+                                <div key={i} className="col-4 shadow p-2 rounded-3 flex-between">
+                                    <span >{e.name}</span>
                                     <AppButton
                                         label='View'
                                         endIcon={<FaLink />}

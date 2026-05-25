@@ -55,7 +55,7 @@ import Author1 from "@assets/image/author1.png";
 
 import Body from "@assets/learning/body-fluid.pdf";
 import Body1 from "@assets/learning/body-fluid-1.pdf";
-import Body2 from "@assets/learning/body-fluid-2.pdf";
+import Respiration1 from "@assets/learning/respiration1.pdf";
 import Respiration from "@assets/learning/respiration.pdf";
 import iNeet from "@assets/learning/Neet.pdf";
 import Kebo from "@assets/learning/kebo.pdf";
@@ -83,5 +83,5 @@ export {
     BodLesson1,BodLesson2,BodLesson3,BodLesson4,BodLesson5,BodLesson6,BodLesson7,BodLesson8,
     Biology_English,Biology_Tamil,Zoology_English,Zoology_Tamil,Question,
     iAuthor,iGuide,Guide1,Author1,Question1,Question2,Question3,Question4,Question5,
-    Body,Body1,Body2,Kebo,Respiration,iNeet
+    Body,Body1,Respiration1,Kebo,Respiration,iNeet
 }

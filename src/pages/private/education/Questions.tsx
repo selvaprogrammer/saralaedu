@@ -17,7 +17,7 @@ export default function Questions() {
       <MetaTag title="Questions" />
        <div className="container">
               <div className="flex-column-center vh-100">
-                <h4>Questions</h4>
+                <h4>Model Question Paper</h4>
                 {ques.map((e, i) => {
                   return (
                     <div key={i} className="w-100 shadow p-2 rounded-3 flex-between">

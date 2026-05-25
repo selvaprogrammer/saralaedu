@@ -42,7 +42,7 @@ const Quiz6 = lazy(() => import("@pages/private/education/Quiz6"));
 const Kalvi = lazy(() => import("@pages/private/education/Kalvi"));
 const Neet = lazy(() => import("@pages/private/education/Neet"));
 const Discussion = lazy(() => import("@pages/private/education/Discussion"));
-
+const Profile = lazy(() => import("@pages/private/education/Profile"));
 function Approutes() {
     return (
         <HashRouter>
@@ -53,6 +53,7 @@ function Approutes() {
                             <Route path='/' element={<Dashboard />} />
                             <Route path='/dashboard' element={<Dashboard />} />
                             <Route path='/adduser' element={<Adduser />} />
+                             <Route path='/profile' element={<Profile />} />
                             <Route path='/forum' element={<Discussion />} />
                             <Route path='/research' element={<Researcher />} />
                             <Route path='/guide' element={<Guider />} />

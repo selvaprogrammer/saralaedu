@@ -7,6 +7,7 @@ import { TbDeviceGamepad3, } from "react-icons/tb";
 import { VscReferences, VscServerProcess } from "react-icons/vsc";
 import { Link, useLocation } from "react-router-dom";
 import { Sidenav, Nav,  } from "rsuite";
+import { CgProfile } from "react-icons/cg";
 
 type MenuItem = {
   name: string;
@@ -60,19 +61,22 @@ export default function Sidebar() {
             Ebook
           </Nav.Item>
           <Nav.Item eventKey="4" icon={<LiaQuestionSolid />} as={Link} to={'/question'}>
-            Question Papers
+            Model Question Paper
           </Nav.Item>
           <Nav.Item eventKey="5" icon={<VscServerProcess />} as={Link} to={'/eval'}>
-            Self Evaluation
+            Self Assesment
           </Nav.Item>
           <Nav.Item eventKey="6" icon={<VscServerProcess />} as={Link} to={'/assesment'}>
-            Self Assesment
+            Assignment
           </Nav.Item>
           <Nav.Item eventKey="7" icon={<MdPlayLesson />} as={Link} to={'/furthur'}>
             Furthur Learning
           </Nav.Item>
           <Nav.Item eventKey="8" icon={<VscReferences />} as={Link} to={'/refrence'}>
             References
+          </Nav.Item>
+          <Nav.Item eventKey="9" icon={<CgProfile />} as={Link} to={'/profile'}>
+            Update Profile
           </Nav.Item>
         </Nav>
       </Sidenav.Body>

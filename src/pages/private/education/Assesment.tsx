@@ -13,7 +13,7 @@ export default function Assesment() {
    return (
      <div className="container">
        <div className="flex-column-center vh-100">
-         <h4>Self Assesment Quiz Links</h4>
+         <h4>Assignment Quiz Links</h4>
          <pre>Note : Before clicking view you must be logged into Diksha Application</pre>
          {evl.map((e, i) => {
            return (
